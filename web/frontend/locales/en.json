@@ -1,0 +1,49 @@
+{
+  "Documentation": {
+    "heading": "Welcome to the Shopify Product Bundler App 🚀",
+    "introduction-1": "The Shopify Product Bundler App is designed to help store owners create and manage product bundles with ease.",
+    "introduction-2": "By offering bundled products and discounts, you can increase your conversion rate and average order value.",
+    "appFeatures": "The Shopify Product Bundler App offers the following key features",
+    "appFeatures-1": "Easily create and manage product bundles by selecting multiple products, setting discount percentages, and assigning unique names.",
+    "appFeatures-2": "Define rules to generate bundles automatically based on product tags, collections, or price ranges.",
+    "appFeatures-3": "Display bundled products with visually distinguished components and show both the original and discounted prices.",
+    "appFeatures-4": "Gain insights into bundle performance with analytics such as total sales, popular bundles, and individual bundle performance.",
+    "appFeatures-5": "Enjoy a seamless experience on both desktop and mobile devices with our responsive user interface."
+  },
+  "HomePage": {
+    "heading": "Nice work on building a Shopify app 🎉",
+    "learnMore": "Learn more about building out your app in <ShopifyTutorialLink>this Shopify tutorial</ShopifyTutorialLink> 📚",
+    "startPopulatingYourApp": "Ready to go? Start populating your app with some sample products to view and test in your store.",
+    "title": "App name",
+    "trophyAltText": "Nice work on building a Shopify app",
+    "yourAppIsReadyToExplore": "Your app is ready to explore! It contains everything you need to get started including the <PolarisLink>Polaris design system</PolarisLink>, <AdminApiLink>Shopify Admin API</AdminApiLink>, and <AppBridgeLink>App Bridge</AppBridgeLink> UI library and components."
+  },
+  "NavigationMenu": {
+    "pageName": "Page name"
+  },
+  "NotFound": {
+    "description": "Check the URL and try again, or use the search bar to find what you need.",
+    "heading": "There is no page at this address"
+  },
+  "PageName": {
+    "body": "Body",
+    "heading": "Heading",
+    "primaryAction": "Primary action",
+    "secondaryAction": "Secondary action",
+    "title": "Page name"
+  },
+  "ProductsCard": {
+    "description": "Sample products are created with a default title and price. You can remove them at any time.",
+    "errorCreatingProductsToast": "There was an error creating products",
+    "populateProductsButton": {
+      "one": "Populate {{count}} product",
+      "other": "Populate {{count}} products"
+    },
+    "productsCreatedToast": {
+      "one": "{{count}} product created!",
+      "other": "{{count}} products created!"
+    },
+    "title": "Product Counter",
+    "totalProductsHeading": "TOTAL PRODUCTS"
+  }
+}
