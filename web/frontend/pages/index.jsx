@@ -109,6 +109,10 @@ export default function Index() {
     visitedPages,
   ]);
 
+  useEffect(() => {
+    reset();
+  }, [debouncedQueryBundle])
+
   const reset = () => {
     setCurrentPage(1);
     setVisitedPages(new Set([0]));
