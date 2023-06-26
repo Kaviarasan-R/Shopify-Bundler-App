@@ -134,6 +134,10 @@ With our feature-rich Bundle Manager, you can efficiently create, manage, and an
 
 <img width="1280" alt="Screenshot 2023-06-26 at 5 35 55 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/505b819d-5b80-4992-83c7-ec9d6449925d">
 
+## Video Explanation
+
+![](https://drive.google.com/file/d/1sod1OTvF48qiiAQa1EGUTkp1tbDsn-Ou/view?usp=sharing)
+
 <hr />
 
 # Thank you
