@@ -1,242 +1,139 @@
-# Shopify App Template - Node
+# Shopify Bundler App 
 
-This is a template for building a [Shopify app](https://shopify.dev/docs/apps/getting-started) using Node and React. It contains the basics for building a Shopify app.
+Supercharge your Shopify store with Shopify Bundler, a powerful app designed to simplify the creation, management, and analytics of product bundles. Built with React.js, Node.js, GraphQL, MySQL, Sequelize (ORM), Polaris (UI framework), and integrated webhooks for instant order updates, Shopify Bundler is the ultimate solution for maximizing sales and enhancing the shopping experience.
 
-Rather than cloning this repo, you can use your preferred package manager and the Shopify CLI with [these steps](#installing-the-template).
+## Key Features
 
-## Benefits
+**Powerful Bundle Creation and Management:**
 
-Shopify apps are built on a variety of Shopify tools to create a great merchant experience. The [create an app](https://shopify.dev/docs/apps/getting-started/create) tutorial in our developer documentation will guide you through creating a Shopify app using this template.
+- Easily create and manage bundles with a user-friendly interface.
+- Define bundle details like name, product selection, discount type, value, and bundle status.
+- Enjoy seamless filtering, searching, and sorting capabilities for efficient bundle management.
+- Stay organized with minimalistic pagination, ensuring a clean and uncluttered experience.
 
-The Node app template comes with the following out-of-the-box functionality:
+**Automatic Bundle Generation:**
 
-- OAuth: Installing the app and granting permissions
-- GraphQL Admin API: Querying or mutating Shopify admin data
-- REST Admin API: Resource classes to interact with the API
-- Shopify-specific tooling:
-  - AppBridge
-  - Polaris
-  - Webhooks
+- Generate bundles automatically based on predefined rules.
+- Set rules including bundle name, product tags, discount type, value, total products, and price range.
+- Let the app do the work for you, creating attractive bundles effortlessly.
 
-## Tech Stack
+**Comprehensive Analytics:**
 
-This template combines a number of third party open-source tools:
+- Gain valuable insights into bundle performance and customer behavior.
+- Analyze order data within specific date ranges for focused insights.
+- Discover key information such as bundle count, total bundles sold, orders with bundles, order dates, product details, customer information, item summaries, bundle value (discounted price + pre-tax price), order value (discounted price + post-tax price), and total sales value (pre-discount price + pre-tax price).
 
-- [Express](https://expressjs.com/) builds the backend.
-- [Vite](https://vitejs.dev/) builds the [React](https://reactjs.org/) frontend.
-- [React Router](https://reactrouter.com/) is used for routing. We wrap this with file-based routing.
-- [React Query](https://react-query.tanstack.com/) queries the Admin API.
-- [`i18next`](https://www.i18next.com/) and related libraries are used to internationalize the frontend.
-  - [`react-i18next`](https://react.i18next.com/) is used for React-specific i18n functionality.
-  - [`i18next-resources-to-backend`](https://github.com/i18next/i18next-resources-to-backend) is used to dynamically load app translations.
-  - [`@formatjs/intl-localematcher`](https://formatjs.io/docs/polyfills/intl-localematcher/) is used to match the user locale with supported app locales.
-  - [`@formatjs/intl-locale`](https://formatjs.io/docs/polyfills/intl-locale) is used as a polyfill for [`Intl.Locale`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) if necessary.
-  - [`@formatjs/intl-pluralrules`](https://formatjs.io/docs/polyfills/intl-pluralrules) is used as a polyfill for [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) if necessary.
+**Bundle Display and Pricing:**
+- Capture your customers' attention with visually appealing bundled product displays.
+- The app prominently showcases bundled products and the total discounted price on product pages, in the cart, and during checkout.
+- Clearly distinguish bundle components and display both the original price and the discounted price.
 
-The following Shopify tools complement these third-party tools to ease app development:
+**Responsive User Interface:**
+- Deliver a seamless experience across all devices with our responsive user interface. Built with React.js and the app ensures optimal performance and usability on both desktop and mobile devices.
 
-- [Shopify API library](https://github.com/Shopify/shopify-node-api) adds OAuth to the Express backend. This lets users install the app and grant scope permissions.
-- [App Bridge React](https://shopify.dev/docs/apps/tools/app-bridge/getting-started/using-react) adds authentication to API requests in the frontend and renders components outside of the App’s iFrame.
-- [Polaris React](https://polaris.shopify.com/) is a powerful design system and component library that helps developers build high quality, consistent experiences for Shopify merchants.
-- [Custom hooks](https://github.com/Shopify/shopify-frontend-template-react/tree/main/hooks) make authenticated requests to the Admin API.
-- [File-based routing](https://github.com/Shopify/shopify-frontend-template-react/blob/main/Routes.jsx) makes creating new pages easier.
-- [`@shopify/i18next-shopify`](https://github.com/Shopify/i18next-shopify) is a plugin for [`i18next`](https://www.i18next.com/) that allows translation files to follow the same JSON schema used by Shopify [app extensions](https://shopify.dev/docs/apps/checkout/best-practices/localizing-ui-extensions#how-it-works) and [themes](https://shopify.dev/docs/themes/architecture/locales/storefront-locale-files#usage).
+**Data Communication and Management:**
+- Efficiently communicate with the Shopify API using GraphQL and seamlessly manage data.
+- Fetch product information, create, update, and delete bundles, and apply discounts effortlessly.
+- Our integration with MySQL and Sequelize (ORM) ensures robust data storage and retrieval, adhering to best practices for querying.
 
-## Getting started
+**Webhook Integration:**
+- Stay up to date with instant order updates using webhooks.
+- Receive real-time notifications about new orders, enabling you to provide timely and efficient customer service.
+- Seamlessly integrate with your existing systems to process orders and ensure accurate inventory management.
+- Capture valuable order data for analytics and save it in your database for further analysis and reporting.
+- Streamline your operations and enhance customer satisfaction with seamless webhook integration.
 
-### Requirements
+With our feature-rich Bundle Manager, you can efficiently create, manage, and analyze bundles, ensuring an enhanced shopping experience for your customers and maximizing your sales potential.
 
-1. You must [download and install Node.js](https://nodejs.org/en/download/) if you don't already have it.
-1. You must [create a Shopify partner account](https://partners.shopify.com/signup) if you don’t have one.
-1. You must create a store for testing if you don't have one, either a [development store](https://help.shopify.com/en/partners/dashboard/development-stores#create-a-development-store) or a [Shopify Plus sandbox store](https://help.shopify.com/en/partners/dashboard/managing-stores/plus-sandbox-store).
+## Database Schema
 
-### Installing the template
+**Bundle, Products & Bundle Products Mapping (Many To Many Relationship)**
 
-This template can be installed using your preferred package manager:
+![Product-Bundler drawio](https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/b19601e8-0332-45e2-bc1b-d3b70beb1bd9)
 
-Using yarn:
+**Bundle Rules**
 
-```shell
-yarn create @shopify/app
-```
+![Product-Bundler drawio](https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/6d828610-b5ad-4e03-8abd-2db1b102a05b)
 
-Using npm:
+**Orders**
 
-```shell
-npm init @shopify/app@latest
-```
+![Product-Bundler drawio](https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/9e589c18-3849-4c3a-9ff1-bc7a9f85ee7c)
 
-Using pnpm:
+## App Requirements
 
-```shell
-pnpm create @shopify/app@latest
-```
+**Requirements**
 
-This will clone the template and install the required dependencies.
+- Shopify partners account
+- Create development store
+- Node.js
+- Ngrok
+- MySQL
 
-#### Local Development
+**Configure Environment Variables**
 
-[The Shopify CLI](https://shopify.dev/docs/apps/tools/cli) connects to an app in your Partners dashboard. It provides environment variables, runs commands in parallel, and updates application URLs for easier development.
+```DATABASE_NAME=bundler```
 
-You can develop locally using your preferred package manager. Run one of the following commands from the root of your app.
+```DATABASE_USERNAME=root```
 
-Using yarn:
+```DATABASE_PASSWORD=root```
 
-```shell
-yarn dev
-```
+```DATABASE_HOST=localhost```
 
-Using npm:
+```DATABASE_DIALECT=mysql```
 
-```shell
-npm run dev
-```
+**Setup Ngrok For Webhooks**
 
-Using pnpm:
+- Install Ngrok && run ```ngrok http 3000```
+- Change package.json scripts:
+  ```dev: shopify app dev --tunnel-url=https://4dcc-42-106-74-85.ngrok-free.app:3000```
+- Create webhook in developement store:
+  
+  ```Settings > Notification > Create Webhooks && paste --tunnel-url```
+  
+  ```Choose webhook API version as (Latest) && Select event to subscribe```
 
-```shell
-pnpm run dev
-```
+## Screenshots
 
-Open the URL generated in your console. Once you grant permission to the app, you can start development.
+**Bundle View**
 
-## Deployment
+<img width="1280" alt="home" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/3be51647-7a9c-4a02-9592-c2a75aaa46ff">
 
-### Application Storage
+**Bundle Filters**
 
-This template uses [SQLite](https://www.sqlite.org/index.html) to store session data. The database is a file called `database.sqlite` which is automatically created in the root. This use of SQLite works in production if your app runs as a single instance.
+<img width="1280" alt="Screenshot 2023-06-26 at 5 32 18 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/fccc66fe-3287-441c-b152-32a7d912a488">
 
-The database that works best for you depends on the data your app needs and how it is queried. You can run your database of choice on a server yourself or host it with a SaaS company. Here’s a short list of databases providers that provide a free tier to get started:
+**Bundle Creation Type**
 
-| Database   | Type             | Hosters                                                                                                                                                                                                                               |
-| ---------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MySQL      | SQL              | [Digital Ocean](https://www.digitalocean.com/try/managed-databases-mysql), [Planet Scale](https://planetscale.com/), [Amazon Aurora](https://aws.amazon.com/rds/aurora/), [Google Cloud SQL](https://cloud.google.com/sql/docs/mysql) |
-| PostgreSQL | SQL              | [Digital Ocean](https://www.digitalocean.com/try/managed-databases-postgresql), [Amazon Aurora](https://aws.amazon.com/rds/aurora/), [Google Cloud SQL](https://cloud.google.com/sql/docs/postgres)                                   |
-| Redis      | Key-value        | [Digital Ocean](https://www.digitalocean.com/try/managed-databases-redis), [Amazon MemoryDB](https://aws.amazon.com/memorydb/)                                                                                                        |
-| MongoDB    | NoSQL / Document | [Digital Ocean](https://www.digitalocean.com/try/managed-databases-mongodb), [MongoDB Atlas](https://www.mongodb.com/atlas/database)                                                                                                  |
+<img width="1280" alt="Screenshot 2023-06-26 at 5 32 01 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/f35f0eb6-b3ec-4fda-800e-06541e71ae8a">
 
-To use one of these, you need to change your session storage configuration. To help, here’s a list of [SessionStorage adapter packages](https://github.com/Shopify/shopify-api-js/tree/main/docs/guides/session-storage.md).
+**Bundle Creation - Select Products**
 
-### Build
+<img width="1280" alt="Screenshot 2023-06-26 at 5 33 00 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/93af6b85-2f36-4a59-843e-e579f0b9de25">
 
-The frontend is a single page app. It requires the `SHOPIFY_API_KEY`, which you can find on the page for your app in your partners dashboard. Paste your app’s key in the command for the package manager of your choice:
+**Bundle Creation - Discounts, Preview, Status**
 
-Using yarn:
+<img width="1280" alt="Screenshot 2023-06-26 at 5 33 46 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/f9ba6b6f-f711-467b-a244-c54c0ac87fd3">
 
-```shell
-cd web/frontend/ && SHOPIFY_API_KEY=REPLACE_ME yarn build
-```
+**Bundle Creation - General**
 
-Using npm:
+<img width="1280" alt="Screenshot 2023-06-26 at 5 34 09 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/62822e74-237c-4198-894c-65f9975964ce">
 
-```shell
-cd web/frontend/ && SHOPIFY_API_KEY=REPLACE_ME npm run build
-```
+**Bundle Rules View**
 
-Using pnpm:
+<img width="1280" alt="Screenshot 2023-06-26 at 5 31 42 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/780d524e-7969-4adb-98ee-ed379e798dd7">
 
-```shell
-cd web/frontend/ && SHOPIFY_API_KEY=REPLACE_ME pnpm run build
-```
+**Bundle Rules - Name, Product Tags, Discount Type, Discount Value, Total Products, Price Range**
 
-You do not need to build the backend.
+<img width="1280" alt="Screenshot 2023-06-26 at 5 35 20 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/a0737331-e27b-4173-8637-d7f546a9889b">
 
-## Hosting
+**Analytics**
 
-When you're ready to set up your app in production, you can follow [our deployment documentation](https://shopify.dev/docs/apps/deployment/web) to host your app on a cloud provider like [Heroku](https://www.heroku.com/) or [Fly.io](https://fly.io/).
+<img width="1280" alt="Screenshot 2023-06-26 at 5 35 48 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/d73e3f52-665c-4aa2-ac38-ed2b3192ae4a">
 
-When you reach the step for [setting up environment variables](https://shopify.dev/docs/apps/deployment/web#set-env-vars), you also need to set the variable `NODE_ENV=production`.
+**About**
 
-## Known issues
+<img width="1280" alt="Screenshot 2023-06-26 at 5 35 55 AM" src="https://github.com/Kaviarasan-R/Shopify-Bundler-App/assets/62686489/505b819d-5b80-4992-83c7-ec9d6449925d">
 
-### Hot module replacement and Firefox
+<hr />
 
-When running the app with the CLI in development mode on Firefox, you might see your app constantly reloading when you access it.
-That happened in previous versions of the CLI, because of the way HMR websocket requests work.
-
-We fixed this issue with v3.4.0 of the CLI, so after updating it, you can make the following changes to your app's `web/frontend/vite.config.js` file:
-
-1. Change the definition `hmrConfig` object to be:
-
-   ```js
-   const host = process.env.HOST
-     ? process.env.HOST.replace(/https?:\/\//, "")
-     : "localhost";
-
-   let hmrConfig;
-   if (host === "localhost") {
-     hmrConfig = {
-       protocol: "ws",
-       host: "localhost",
-       port: 64999,
-       clientPort: 64999,
-     };
-   } else {
-     hmrConfig = {
-       protocol: "wss",
-       host: host,
-       port: process.env.FRONTEND_PORT,
-       clientPort: 443,
-     };
-   }
-   ```
-
-1. Change the `server.host` setting in the configs to `"localhost"`:
-
-   ```js
-   server: {
-     host: "localhost",
-     ...
-   ```
-
-### I can't get past the ngrok "Visit site" page
-
-When you’re previewing your app or extension, you might see an ngrok interstitial page with a warning:
-
-```text
-You are about to visit <id>.ngrok.io: Visit Site
-```
-
-If you click the `Visit Site` button, but continue to see this page, then you should run dev using an alternate tunnel URL that you run using tunneling software.
-We've validated that [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/trycloudflare/) works with this template.
-
-To do that, you can [install the `cloudflared` CLI tool](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/), and run:
-
-```shell
-# Note that you can also use a different port
-cloudflared tunnel --url http://localhost:3000
-```
-
-Out of the logs produced by cloudflare you will notice a https URL where the domain ends with `trycloudflare.com`. This is your tunnel URL. You need to copy this URL as you will need it in the next step.
-
-```shell
-2022-11-11T19:57:55Z INF Requesting new quick Tunnel on trycloudflare.com...
-2022-11-11T19:57:58Z INF +--------------------------------------------------------------------------------------------+
-2022-11-11T19:57:58Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
-2022-11-11T19:57:58Z INF |  https://randomly-generated-hostname.trycloudflare.com                                     |
-2022-11-11T19:57:58Z INF +--------------------------------------------------------------------------------------------+
-```
-
-Below you would replace `randomly-generated-hostname` with what you have copied from the terminal. In a different terminal window, navigate to your app's root and with the URL from above you would call:
-
-```shell
-# Using yarn
-yarn dev --tunnel-url https://randomly-generated-hostname.trycloudflare.com:3000
-# or using npm
-npm run dev --tunnel-url https://randomly-generated-hostname.trycloudflare.com:3000
-# or using pnpm
-pnpm dev --tunnel-url https://randomly-generated-hostname.trycloudflare.com:3000
-```
-
-## Developer resources
-
-- [Introduction to Shopify apps](https://shopify.dev/docs/apps/getting-started)
-- [App authentication](https://shopify.dev/docs/apps/auth)
-- [Shopify CLI](https://shopify.dev/docs/apps/tools/cli)
-- [Shopify API Library documentation](https://github.com/Shopify/shopify-api-js#readme)
-- [Getting started with internationalizing your app](https://shopify.dev/docs/apps/best-practices/internationalization/getting-started)
-  - [i18next](https://www.i18next.com/)
-    - [Configuration options](https://www.i18next.com/overview/configuration-options)
-  - [react-i18next](https://react.i18next.com/)
-    - [`useTranslation` hook](https://react.i18next.com/latest/usetranslation-hook)
-    - [`Trans` component usage with components array](https://react.i18next.com/latest/trans-component#alternative-usage-components-array)
+# Thank you
