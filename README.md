@@ -136,7 +136,7 @@ With our feature-rich Bundle Manager, you can efficiently create, manage, and an
 
 ## Video Explanation
 
-![](https://drive.google.com/file/d/1sod1OTvF48qiiAQa1EGUTkp1tbDsn-Ou/view?usp=sharing)
+![https://drive.google.com/file/d/1sod1OTvF48qiiAQa1EGUTkp1tbDsn-Ou/view?usp=sharing](https://drive.google.com/file/d/1sod1OTvF48qiiAQa1EGUTkp1tbDsn-Ou/view?usp=sharing)
 
 <hr />
 
