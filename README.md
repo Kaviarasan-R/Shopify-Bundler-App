@@ -1,4 +1,4 @@
-# Shopify Bundler App - Assignment from Cartrabbit
+# Shopify Bundler App - SDE Task from Cartrabbit
 
 Supercharge your Shopify store with Shopify Bundler, a powerful app designed to simplify the creation, management, and analytics of product bundles. Built with React.js, Node.js, GraphQL, MySQL, Sequelize (ORM), Polaris (UI framework), and integrated webhooks for instant order updates, Shopify Bundler is the ultimate solution for maximizing sales and enhancing the shopping experience.
 
